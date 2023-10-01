@@ -1,13 +1,14 @@
 {-# LANGUAGE OverloadedStrings   #-}
-{-# LANGUAGE TypeApplications    #-}
 module Main (main) where
 
-import HsLua (Exception, getglobal, openlibs, peek, run, top)
+import HsLua.Core
 
 main :: IO ()
 main = do
-  luaVersion <- run @Exception $ do
+  eluaVersion <- runEither @Exception $ do
     openlibs
+    liftIO $ print '1'
     _ <- getglobal "_VERSION"
-    peek top
-  putStrLn luaVersion
+    liftIO $ print '2'
+    tostring top
+  print eluaVersion

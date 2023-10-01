@@ -12,15 +12,15 @@
 %global without_haddock 1
 %global debug_package %{nil}
 
-Name:           pandoc-version
-Version:        0.1.7
+Name:           hslua-ppc64le
+Version:        0.4
 Release:        1%{?dist}
 Summary:        One line summary
 
 License:        BSD-3-Clause
 Url:            https://hackage.haskell.org/package/%{name}
 # Begin cabal-rpm sources:
-Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:        pandoc.hs
 # End cabal-rpm sources
 
 # Begin cabal-rpm deps:
@@ -42,45 +42,15 @@ Short paragraph here.
 
 %prep
 # Begin cabal-rpm setup:
-%setup -q
 # End cabal-rpm setup
 
 
 %build
-# Begin cabal-rpm build:
-%global cabal_install %{_bindir}/cabal
-%cabal_install update
-%if 0%{?rhel} && 0%{?rhel} < 9
-%cabal_install sandbox init
-%cabal_install install
-%endif
-# End cabal-rpm build
-
-
-%install
-# Begin cabal-rpm install
-mkdir -p %{buildroot}%{_bindir}
-%if 0%{?fedora} >= 33 || 0%{?rhel} > 8
-%if 0%{?fedora} >= 36
-%ghc_set_gcc_flags
-%endif
-%cabal_install install %{?ghc_major:-w ghc-%{ghc_major}} --install-method=copy --enable-executable-stripping --installdir=%{buildroot}%{_bindir}
-%else
-for i in .cabal-sandbox/bin/*; do
-strip -s -o %{buildroot}%{_bindir}/$(basename $i) $i
-done
-%endif
-# End cabal-rpm install
-
-
-%check
-%{buildroot}%{_bindir}/pandoc-version
+runghc %{SOURCE0}
 
 
 %files
 # Begin cabal-rpm files:
-%license LICENSE
-%{_bindir}/%{name}
 # End cabal-rpm files
 
 
