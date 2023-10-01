@@ -9,8 +9,7 @@ main :: IO ()
 main = do
   eluaVersion <- runEither @Exception $ do
     openlibs
-    liftIO $ print '1'
     _ <- getglobal "_VERSION"
-    liftIO $ print '2'
+    liftIO $ print '1'
     tostring top
   print eluaVersion
