@@ -13,7 +13,7 @@
 %global debug_package %{nil}
 
 Name:           hslua-ppc64le
-Version:        0.4
+Version:        0.5
 Release:        1%{?dist}
 Summary:        One line summary
 
