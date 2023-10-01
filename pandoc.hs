@@ -1,4 +1,6 @@
 {-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE TypeApplications    #-}
+
 module Main (main) where
 
 import HsLua.Core
