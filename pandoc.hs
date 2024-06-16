@@ -10,7 +10,6 @@ import qualified Data.ByteString as B
 import qualified Foreign.Storable as F
 import Foreign.Marshal.Alloc
 import Foreign.Ptr
-import Control.Monad ((<$!>))
 import Lua.Primary
 
 main :: IO ()

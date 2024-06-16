@@ -27,7 +27,6 @@ Source0:        pandoc.hs
 BuildRequires:  ghc-rpm-macros
 %if %{defined ghc_name}
 BuildRequires:  %{ghc_name}-devel
-BuildRequires:  %{ghc_name}-prof
 BuildRequires:  zlib-devel
 %else
 BuildRequires:  ghc-base-devel
