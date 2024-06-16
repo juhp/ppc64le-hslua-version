@@ -13,7 +13,7 @@
 %global debug_package %{nil}
 
 Name:           hslua-ppc64le
-Version:        0.5
+Version:        0.6
 Release:        1%{?dist}
 Summary:        One line summary
 
@@ -31,7 +31,7 @@ BuildRequires:  %{ghc_name}-prof
 BuildRequires:  zlib-devel
 %else
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-hslua-devel
+BuildRequires:  ghc-hslua-core-devel
 %endif
 BuildRequires:  cabal-install > 1.18
 # End cabal-rpm deps

@@ -28,5 +28,5 @@ main = do
         then return Nothing
         else do
         cstrLen <- F.peek lenPtr
-        Just <$!> B.packCStringLen (cstr, fromIntegral cstrLen)
+        Just <$> B.packCStringLen (cstr, fromIntegral cstrLen)
   print eluaVersion
